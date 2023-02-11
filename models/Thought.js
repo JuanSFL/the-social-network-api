@@ -6,8 +6,8 @@ const thoughtSchema = new Schema (
       thoughtText: {
         type: String,
         required: true,
-        min: 1,
-        max: 280,
+        minLength: 1,
+        maxLength: 280,
       },
       createdAt: {
         type: Date,
@@ -30,9 +30,34 @@ const thoughtSchema = new Schema (
         id: false,
     }
 )
+
+const reactionSchema = new Schema (
+    {
+      reactionId: {
+        type: Schema.Types.ObectId,
+        default: () => new Types.ObjectId()
+      },
+      reactionBody: {
+        type: String,
+        required: true,
+        maxLength: 280
+      },
+      username: {
+        type: String,
+        required: true
+      },
+      createdAt: {
+        type: Date,
+        default: Date.now,
+        // getter to format time stamp on query
+        get: timeStamp => moment(timeStamp).format("MMM DD, YYYY [at] hh:mm a"),
+      }
+    }
+)
+
 // virtual that gets the reaction count of the thought.
 thoughtSchema.virtual('reactionCount')
-.get(function() {
+.get(()=> {
     return this.reactions.length;
 })
 
