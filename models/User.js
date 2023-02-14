@@ -13,7 +13,7 @@ const userSchema = new Schema({
         unique: true,
         required: true,
         // Regex that checks if user input is a valid email address.
-        match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please enter a valid email address']
+        match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please enter valid email address']
     },
     //array of id's referencing the thought model
     thoughts: [{
@@ -36,7 +36,7 @@ const userSchema = new Schema({
 }
 );
 // virtual that gets the friendcount of the user
-userSchema.virtual("friendCount").get(function () {
+userSchema.virtual("friendCount").get(()=> {
     return this.friends.length;
   });
   // creates User model using the UserSchema
