@@ -53,6 +53,15 @@
   }
   14. Delete a reaction by ID: DELETE /api/thoughts/:thoughtId/reactions/:reactionId
   
+  Here is a demo of the testing in insomnia : 
+
+https://user-images.githubusercontent.com/113400746/219904788-b5b45035-99c2-492d-994d-45f9ce4b5c08.mp4
+
+
+  
+
+
+  
   ## [License](#table-of-contents)
   The application is covered under the following license:
   
